@@ -6,6 +6,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
+import { MatMenuModule } from '@angular/material/menu';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { Subject, takeUntil } from 'rxjs';
 import { ChatMessage, ChatRequest } from '../../core/models/chat.model';
@@ -24,6 +25,7 @@ import { SignalRService } from '../../core/services/signalr.service';
     MatIconModule,
     MatProgressSpinnerModule,
     MatExpansionModule,
+    MatMenuModule,
   ],
   templateUrl: './chat.component.html',
   styleUrls: ['./chat.component.scss'],
@@ -35,7 +37,90 @@ export class ChatComponent implements OnInit, OnDestroy {
   userInput = '';
   isLoading = false;
   sessionId = '';
+  viewMode: 'all' | 'companies' | 'projects' = 'all';
   private destroy$ = new Subject<void>();
+
+  quickLinks = [
+    {
+      label: 'GitHub (Source Control)',
+      note: 'Public repository',
+      url: 'https://github.com/your-username',
+      icon: 'code',
+    },
+    {
+      label: 'GitLab (Local Source Control)',
+      note: 'Self-hosted instance',
+      url: 'https://gitlab.your-domain.local/your-username',
+      icon: 'storage',
+    },
+    {
+      label: 'Download Resume',
+      note: 'Azure Storage (PDF)',
+      url: 'https://<storage-account>.blob.core.windows.net/<container>/JuanPabloBetancourt_Resume.pdf',
+      icon: 'download',
+      downloadName: 'JuanPabloBetancourt_Resume.pdf',
+    },
+    {
+      label: 'LinkedIn',
+      note: 'Professional profile',
+      url: 'https://www.linkedin.com/in/your-handle',
+      icon: 'person',
+    },
+  ];
+
+  companies = [
+    {
+      name: 'Acclaim Systems Inc',
+      url: 'https://www.acclaimsystems.com',
+      logo: 'assets/logos/acclaim-systems.svg',
+      projects: ['Project portfolio', 'Cloud modernization', 'AI enablement'],
+    },
+    {
+      name: 'Asisprin S.A.S',
+      url: 'https://www.asisprin.com',
+      logo: 'assets/logos/asisprin.svg',
+      projects: ['Enterprise systems', 'Process automation', 'Data platforms'],
+    },
+    {
+      name: 'Sinco Comunicaciones',
+      url: 'https://www.sinco.co',
+      logo: 'assets/logos/sinco.svg',
+      projects: ['Telecom integration', 'Network observability', 'Service portals'],
+    },
+    {
+      name: 'Jupabequi LLC',
+      url: 'https://www.jupabequi.com',
+      logo: 'assets/logos/jupabequi.svg',
+      projects: ['AI resume platform', 'Azure RAG services', 'Conversational UI'],
+    },
+  ];
+
+  projects = [
+    {
+      name: 'AI Resume Chat Experience',
+      company: 'Jupabequi LLC',
+      summary: 'Multi-channel assistant with RAG + agent workflows.',
+      url: 'https://www.jupabequi.com',
+    },
+    {
+      name: 'Azure Search Modernization',
+      company: 'Acclaim Systems Inc',
+      summary: 'Search reindexing, pipelines, and analytics dashboards.',
+      url: 'https://www.acclaimsystems.com',
+    },
+    {
+      name: 'Business Process Automation',
+      company: 'Asisprin S.A.S',
+      summary: 'Workflow optimization with secure integrations.',
+      url: 'https://www.asisprin.com',
+    },
+    {
+      name: 'Telecom Service Portal',
+      company: 'Sinco Comunicaciones',
+      summary: 'Customer portals and service monitoring.',
+      url: 'https://www.sinco.co',
+    },
+  ];
 
   constructor(
     private chatService: ChatService,
@@ -161,5 +246,9 @@ export class ChatComponent implements OnInit, OnDestroy {
     this.messages = [];
     this.addWelcomeMessage();
     this.initializeSession();
+  }
+
+  setViewMode(mode: 'all' | 'companies' | 'projects'): void {
+    this.viewMode = mode;
   }
 }
