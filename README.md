@@ -1,18 +1,18 @@
 # Chat UI (AIR-FE-CHAR_UI)
 
-Frontend web para el chat RAG. Provee la interfaz de usuario para enviar preguntas y visualizar respuestas en tiempo real.
+Web frontend for the RAG chat. It provides the UI to send questions and view real-time responses.
 
-## Qué hace
-- Interfaz de chat con historial y estados de respuesta.
-- Conecta con la API RAG y SignalR para streaming/tiempo real.
-- Gestiona modelos y servicios de comunicación en el cliente.
+## What it does
+- Chat interface with history and response states.
+- Connects to the RAG API and SignalR for real-time updates.
+- Manages client-side models and communication services.
 
-## Estructura
-- `src/app/core/services/`: servicios de chat y SignalR.
-- `src/app/features/chat/`: componentes y UI del chat.
-- `src/environments/`: configuración por entorno.
+## Structure
+- `src/app/core/services/`: chat and SignalR services.
+- `src/app/features/chat/`: chat components and UI.
+- `src/environments/`: environment configuration.
 
-## Tecnologías
+## Tech
 - Angular
 - TypeScript
 - SignalR client
