@@ -1,0 +1,80 @@
+<div class="chat-container">
+  <div class="messages-container" #messagesContainer>
+    <div class="messages-list">
+      <div
+        *ngFor="let message of messages"
+        [class.user-message]="message.isUser"
+        [class.ai-message]="!message.isUser"
+        class="message"
+      >
+        <mat-card class="message-card">
+          <mat-card-content>
+            <div class="message-header">
+              <img *ngIf="!message.isUser" src="assets/jpicon.png" class="ai-avatar" alt="AI Assistant" />
+              <mat-icon *ngIf="message.isUser">person</mat-icon>
+              <span class="message-time">{{ message.timestamp | date: 'short' }}</span>
+            </div>
+            <div class="message-content">
+              {{ message.content }}
+            </div>
+
+            <!-- JPB: Document Sources - Hidden per user request -->
+            <!-- <mat-expansion-panel *ngIf="message.sources && message.sources.length > 0" class="sources-panel">
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  <mat-icon>description</mat-icon>
+                  Sources ({{ message.sources.length }})
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              <div class="sources-list">
+                <div *ngFor="let source of message.sources" class="source-item">
+                  <div class="source-header">
+                    <strong>{{ source.fileName }}</strong>
+                    <span class="relevance-score">Relevance: {{ (source.relevanceScore * 100).toFixed(0) }}%</span>
+                  </div>
+                  <div class="source-content">{{ source.content }}</div>
+                </div>
+              </div>
+            </mat-expansion-panel> -->
+          </mat-card-content>
+        </mat-card>
+      </div>
+
+      <!-- Loading indicator -->
+      <div *ngIf="isLoading" class="message ai-message">
+        <mat-card class="message-card loading-card">
+          <mat-card-content>
+            <div class="loading-content">
+              <mat-spinner diameter="30"></mat-spinner>
+              <span>Thinking...</span>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+
+  <div class="input-container">
+    <mat-card class="input-card">
+      <mat-card-content class="input-content">
+        <button mat-icon-button (click)="clearChat()" matTooltip="Clear chat">
+          <mat-icon>refresh</mat-icon>
+        </button>
+        <mat-form-field class="message-input" appearance="outline">
+          <mat-label>Ask me anything...</mat-label>
+          <textarea
+            matInput
+            [(ngModel)]="userInput"
+            (keypress)="onKeyPress($event)"
+            [disabled]="isLoading"
+            rows="2"
+            placeholder="e.g., What are your technical skills?"
+          ></textarea>
+        </mat-form-field>
+        <button mat-raised-button color="primary" (click)="sendMessage()" [disabled]="!userInput.trim() || isLoading">
+          <mat-icon>send</mat-icon>
+        </button>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
