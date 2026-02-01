@@ -25,12 +25,13 @@ jobs:
       - name: Build Angular app
         run: npm run build -- --configuration production
 
-      - name: Deploy via SFTP
-        uses: appleboy/sftp-action@v0.1.8
-        with:
-          host: ${{ secrets.SFTP_HOST }}
-          username: ${{ secrets.SFTP_USER }}
-          password: ${{ secrets.SFTP_PASSWORD }}
-          port: 2222
-          source: "dist/resume-chat-ui/*"
-          target: "/ResumeAI/frontend"
+      - name: Install lftp
+        run: sudo apt-get update && sudo apt-get install -y lftp
+
+      - name: Deploy via SFTP (lftp)
+        run: |
+          lftp -u "${{ secrets.SFTP_USER }}","${{ secrets.SFTP_PASSWORD }}" sftp://${{ secrets.SFTP_HOST }}:2222 <<EOF
+          set sftp:auto-confirm yes
+          mirror -R --delete --verbose dist/resume-chat-ui/ /ResumeAI/frontend/
+          bye
+          EOF
