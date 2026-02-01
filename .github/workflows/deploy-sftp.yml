@@ -32,6 +32,6 @@ jobs:
         run: |
           lftp -u "${{ secrets.SFTP_USER }}","${{ secrets.SFTP_PASSWORD }}" sftp://${{ secrets.SFTP_HOST }}:2222 <<EOF
           set sftp:auto-confirm yes
-          mirror -R --delete --verbose dist/resume-chat-ui/browser /ResumeAI/frontend/
+          mirror -R --delete --verbose dist/resume-chat-ui/browser/ /ResumeAI/frontend/
           bye
           EOF
