@@ -44,26 +44,26 @@ export class ChatComponent implements OnInit, OnDestroy {
     {
       label: 'GitHub (Source Control)',
       note: 'Public repository',
-      url: 'https://github.com/your-username',
+      url: 'https://github.com/Juan-Betancourtq',
       icon: 'code',
     },
     {
       label: 'GitLab (Local Source Control)',
       note: 'Self-hosted instance',
-      url: 'https://gitlab.your-domain.local/your-username',
+      url: 'https://git.jupabequi.com',
       icon: 'storage',
     },
     {
       label: 'Download Resume',
       note: 'Azure Storage (PDF)',
-      url: 'https://<storage-account>.blob.core.windows.net/<container>/JuanPabloBetancourt_Resume.pdf',
+      url: 'https://jupabequistorage.blob.core.windows.net/documents/Juan_Pablo Betancourt_resume_2026.docx',
       icon: 'download',
       downloadName: 'JuanPabloBetancourt_Resume.pdf',
     },
     {
       label: 'LinkedIn',
       note: 'Professional profile',
-      url: 'https://www.linkedin.com/in/your-handle',
+      url: 'https://www.linkedin.com/in/juanbetancourt',
       icon: 'person',
     },
   ];
@@ -77,7 +77,7 @@ export class ChatComponent implements OnInit, OnDestroy {
     },
     {
       name: 'Asisprin S.A.S',
-      url: 'https://www.asisprin.com',
+      url: 'https://www.asisprin.com/',
       logo: 'assets/logos/asisprin.svg',
       projects: ['Enterprise systems', 'Process automation', 'Data platforms'],
     },
