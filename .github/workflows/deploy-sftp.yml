@@ -26,11 +26,12 @@ jobs:
         run: npm run build -- --configuration production
 
       - name: Deploy via SFTP
-        uses: appleboy/scp-action@v0.1.7
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
-          host: ${{ secrets.SFTP_HOST }}
+          server: ${{ secrets.SFTP_HOST }}
           username: ${{ secrets.SFTP_USER }}
           password: ${{ secrets.SFTP_PASSWORD }}
           port: 2222
-          source: "dist/resume-chat-ui/*"
-          target: "/ResumeAI/frontend"
+          protocol: sftp
+          local-dir: dist/resume-chat-ui/
+          server-dir: /ResumeAI/frontend/
