@@ -263,3 +263,9 @@
   background: #777;
 }
 
+@media (max-width: 960px) {
+  .right-dialog {
+    display: none;
+  }
+}
+
