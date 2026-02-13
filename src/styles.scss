@@ -29,6 +29,11 @@ body {
   color: #e0e0e0;
 }
 
+app-root {
+  display: block;
+  height: 100%;
+}
+
 * {
   box-sizing: border-box;
 }

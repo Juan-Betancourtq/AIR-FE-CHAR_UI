@@ -1,0 +1,171 @@
+:host {
+  display: block;
+  height: 100%;
+}
+
+.right-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  height: 100%;
+  overflow-y: auto;
+  padding-right: 6px;
+}
+
+.info-card {
+  background: rgba(24, 24, 24, 0.92);
+  border: 1px solid rgba(80, 80, 80, 0.35);
+  border-radius: 20px;
+  padding: 16px;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.35);
+}
+
+.card-title {
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 12px;
+  color: rgba(230, 230, 230, 0.8);
+}
+
+.link-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.link-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  border-radius: 14px;
+  background: rgba(40, 40, 40, 0.6);
+  border: 1px solid rgba(90, 90, 90, 0.3);
+  color: inherit;
+  text-decoration: none;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.link-item:hover {
+  transform: translateY(-2px);
+  border-color: rgba(130, 130, 130, 0.6);
+}
+
+.link-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.link-label {
+  font-weight: 600;
+}
+
+.link-note {
+  font-size: 12px;
+  color: rgba(220, 220, 220, 0.7);
+}
+
+.company-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+
+.company-card {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 12px;
+  border-radius: 16px;
+  background: rgba(34, 34, 34, 0.8);
+  border: 1px solid rgba(90, 90, 90, 0.3);
+  text-decoration: none;
+  color: inherit;
+  transition: border-color 0.2s ease;
+}
+
+.company-card:hover {
+  border-color: rgba(140, 140, 140, 0.6);
+}
+
+.company-logo {
+  width: 120px;
+  height: 48px;
+  object-fit: contain;
+}
+
+.company-name {
+  font-weight: 600;
+}
+
+.company-projects {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.project-pill {
+  font-size: 11px;
+  padding: 4px 8px;
+  border-radius: 999px;
+  background: rgba(80, 80, 80, 0.5);
+  border: 1px solid rgba(120, 120, 120, 0.4);
+}
+
+.project-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.project-item {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 12px;
+  border-radius: 16px;
+  background: rgba(34, 34, 34, 0.8);
+  border: 1px solid rgba(90, 90, 90, 0.3);
+  text-decoration: none;
+  color: inherit;
+}
+
+.project-item:hover {
+  border-color: rgba(140, 140, 140, 0.6);
+}
+
+.project-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.project-name {
+  font-weight: 600;
+}
+
+.project-company {
+  font-size: 12px;
+  color: rgba(220, 220, 220, 0.7);
+}
+
+.project-summary {
+  font-size: 12px;
+  color: rgba(220, 220, 220, 0.8);
+  line-height: 1.4;
+}
+
+.right-panel::-webkit-scrollbar {
+  width: 6px;
+}
+
+.right-panel::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.right-panel::-webkit-scrollbar-thumb {
+  background: rgba(120, 120, 120, 0.5);
+  border-radius: 4px;
+}

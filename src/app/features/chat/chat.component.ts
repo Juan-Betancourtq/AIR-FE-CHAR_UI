@@ -8,10 +8,12 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatSidenavModule } from '@angular/material/sidenav';
 import { Subject, takeUntil } from 'rxjs';
 import { ChatMessage, ChatRequest } from '../../core/models/chat.model';
 import { ChatService } from '../../core/services/chat.service';
 import { SignalRService } from '../../core/services/signalr.service';
+import { ChatSidebarComponent } from './chat-sidebar/chat-sidebar.component';
 
 @Component({
   selector: 'app-chat',
@@ -26,6 +28,8 @@ import { SignalRService } from '../../core/services/signalr.service';
     MatProgressSpinnerModule,
     MatExpansionModule,
     MatMenuModule,
+    MatSidenavModule,
+    ChatSidebarComponent,
   ],
   templateUrl: './chat.component.html',
   styleUrls: ['./chat.component.scss'],

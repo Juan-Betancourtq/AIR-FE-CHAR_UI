@@ -1,0 +1,62 @@
+<div class="right-panel">
+  <section class="info-card">
+    <div class="card-title">Quick links</div>
+    <div class="link-list">
+      <a
+        class="link-item"
+        *ngFor="let link of quickLinks"
+        [href]="link.url"
+        target="_blank"
+        rel="noopener"
+        [attr.download]="link.downloadName || null"
+      >
+        <mat-icon>{{ link.icon }}</mat-icon>
+        <div class="link-text">
+          <div class="link-label">{{ link.label }}</div>
+          <div class="link-note">{{ link.note }}</div>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <section class="info-card" *ngIf="viewMode !== 'projects'">
+    <div class="card-title">Companies</div>
+    <div class="company-grid">
+      <a
+        class="company-card"
+        *ngFor="let company of companies"
+        [href]="company.url"
+        target="_blank"
+        rel="noopener"
+      >
+        <img [src]="company.logo" [alt]="company.name" class="company-logo" />
+        <div class="company-name">{{ company.name }}</div>
+        <div class="company-projects">
+          <span class="project-pill" *ngFor="let project of company.projects">{{ project }}</span>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <section class="info-card" *ngIf="viewMode !== 'companies'">
+    <div class="card-title">Projects</div>
+    <div class="project-list">
+      <a
+        class="project-item"
+        *ngFor="let project of projects"
+        [href]="project.url"
+        target="_blank"
+        rel="noopener"
+      >
+        <div class="project-header">
+          <mat-icon>folder</mat-icon>
+          <div>
+            <div class="project-name">{{ project.name }}</div>
+            <div class="project-company">{{ project.company }}</div>
+          </div>
+        </div>
+        <div class="project-summary">{{ project.summary }}</div>
+      </a>
+    </div>
+  </section>
+</div>
