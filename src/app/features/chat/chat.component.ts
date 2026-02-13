@@ -56,9 +56,9 @@ export class ChatComponent implements OnInit, OnDestroy {
     {
       label: 'Download Resume',
       note: 'Azure Storage (PDF)',
-      url: 'https://jupabequistorage.blob.core.windows.net/documents/Juan_Pablo Betancourt_resume_2026.docx',
+      url: 'https://jupabequistorage.blob.core.windows.net/documents/Betancourt_Juan_Pablo_Resume.pdf?sp=r&st=2026-02-13T13:38:24Z&se=2026-03-13T20:53:24Z&spr=https&sv=2024-11-04&sr=b&sig=%2Bz0ME5%2BqB6axQ1axnllVmsQtB881alFYaCWAqhMpfWc%3D',
       icon: 'download',
-      downloadName: 'JuanPabloBetancourt_Resume.pdf',
+      downloadName: 'Betancourt_Juan_Pablo_Resume.pdf',
     },
     {
       label: 'LinkedIn',
