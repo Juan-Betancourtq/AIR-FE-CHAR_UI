@@ -9,6 +9,9 @@ import { MatInputModule } from '@angular/material/input';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
+import { marked } from 'marked';
+import DOMPurify from 'dompurify';
 import { Subject, takeUntil } from 'rxjs';
 import { ChatMessage, ChatRequest } from '../../core/models/chat.model';
 import { ChatService } from '../../core/services/chat.service';
@@ -128,8 +131,14 @@ export class ChatComponent implements OnInit, OnDestroy {
 
   constructor(
     private chatService: ChatService,
-    private signalRService: SignalRService
-  ) {}
+    private signalRService: SignalRService,
+    private sanitizer: DomSanitizer
+  ) {
+    marked.setOptions({
+      breaks: true,
+      gfm: true,
+    });
+  }
 
   ngOnInit(): void {
     this.initializeSession();
@@ -254,5 +263,12 @@ export class ChatComponent implements OnInit, OnDestroy {
 
   setViewMode(mode: 'all' | 'companies' | 'projects'): void {
     this.viewMode = mode;
+  }
+
+  formatMessage(content: string): SafeHtml {
+    const raw = marked.parse(content ?? '', { async: false });
+    const html = typeof raw === 'string' ? raw : '';
+    const sanitized = DOMPurify.sanitize(html, { USE_PROFILES: { html: true } });
+    return this.sanitizer.bypassSecurityTrustHtml(sanitized);
   }
 }
